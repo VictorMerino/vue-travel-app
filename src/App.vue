@@ -4,6 +4,8 @@ const dos = 2
 </script>
 
 <template>
+  <RouterLink :to="{ name: 'Home' }">Home</RouterLink> |
+  <RouterLink :to="{ name: 'About' }">About</RouterLink>
   <RouterView />
 </template>
 

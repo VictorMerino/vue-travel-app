@@ -125,7 +125,7 @@ a {
 
 /*Modal Overlay*/
 .modal-overlay:before {
-  content: "";
+  content: '';
   position: fixed;
   top: 0;
   left: 0;
@@ -160,24 +160,31 @@ a {
   margin-bottom: 15px;
 }
 /* Form */
-.form{
-  display:flex;
+.form {
+  display: flex;
   flex-direction: column;
-  max-width:400px;
+  max-width: 400px;
   margin: 0 auto;
 }
 
-.input{
+.input {
   border: 1px solid gray;
   padding: 10px;
-  margin-bottom:20px;
-  border-radius:5px;
+  margin-bottom: 20px;
+  border-radius: 5px;
 }
 
-.btn{
-  background-color:#2c3e50;
+.btn {
+  background-color: #2c3e50;
   color: white;
   padding: 10px;
   border-radius: 5px;
-  border:none;
+  border: none;
+}
+
+.nav--active {
+  border-bottom: 2px solid white;
+  font-weight: bold;
+  color: white;
+  text-shadow: black 0.1em 0.1em 0.2em;
 }

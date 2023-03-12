@@ -1,13 +1,16 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import sourceData from '@/data/data.json'
+</script>
 
 <template>
   <div class="nav" id="nav">
-    <RouterLink :to="{ name: 'Home' }">Home</RouterLink>
-    <RouterLink :to="{ name: 'Brazil' }">Brazil</RouterLink>
-    <RouterLink :to="{ name: 'Jamaica' }">Jamaica</RouterLink>
-    <RouterLink :to="{ name: 'Panama' }">Panama</RouterLink>
-    <RouterLink :to="{ name: 'Hawaii' }">Hawaii</RouterLink>
-    <RouterLink :to="{ name: 'About' }">About</RouterLink>
+    <RouterLink id="logo" :to="{ name: 'Home' }">Home</RouterLink>
+    <RouterLink
+      v-for="destination in sourceData.destinations"
+      :key="destination.id"
+      :to="{ name: 'Destination', params: { id: destination.id } }"
+      >{{ destination.name }}
+    </RouterLink>
   </div>
 </template>
 

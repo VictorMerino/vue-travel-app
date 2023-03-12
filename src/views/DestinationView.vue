@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, onBeforeMount, ref } from 'vue'
+import { computed, onBeforeMount, ref, watch } from 'vue'
 import { useRoute } from 'vue-router'
 // import sourceData from '@/data/data.json'
 
@@ -12,11 +12,20 @@ const route = useRoute()
 
 let destination = ref({})
 const destinationSlug = computed(() => route.params.slug.toLowerCase())
-onBeforeMount(async () => {
+async function getData() {
   const response = await fetch(
     `https://travel-dummy-api.netlify.app/${destinationSlug.value}.json`
   )
   destination.value = await response.json()
+}
+onBeforeMount(async () => {
+  getData()
+  watch(
+    () => route.params,
+    () => {
+      getData()
+    }
+  )
 })
 
 // const destinationId = computed(() => parseInt(route.params.id))
@@ -28,9 +37,11 @@ onBeforeMount(async () => {
 ) */
 </script>
 <template>
-  <h1>{{ destination.name }}</h1>
-  <div class="destination-details">
-    <img :src="`/images/${destination.image}`" :alt="destination.name" />
-    <p>{{ destination.description }}</p>
-  </div>
+  <section v-if="destination" class="destination">
+    <h1>{{ destination.name }}</h1>
+    <div class="destination-details">
+      <img :src="`/images/${destination.image}`" :alt="destination.name" />
+      <p>{{ destination.description }}</p>
+    </div>
+  </section>
 </template>

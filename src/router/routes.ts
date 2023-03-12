@@ -14,26 +14,26 @@ export const routes = [
   {
     path: '/brazil',
     name: 'Brazil',
-    component: BrazilView,
+    component: () => import('@/views/BrazilView.vue'),
   },
   {
     path: '/hawaii',
     name: 'Hawaii',
-    component: HawaiiView,
+    component: () => import('@/views/HawaiiView.vue'),
   },
   {
     path: '/Jamaica',
     name: 'Jamaica',
-    component: JamaicaView,
+    component: () => import('@/views/JamaicaView.vue'),
   },
   {
     path: '/panama',
     name: 'Panama',
-    component: PanamaView,
+    component: () => import('@/views/PanamaView.vue'),
   },
   {
     path: '/about',
     name: 'About',
-    component: AboutView,
+    component: () => import('@/views/AboutView.vue'),
   },
 ]

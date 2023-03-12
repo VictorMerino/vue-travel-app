@@ -15,5 +15,6 @@ export const routes = [
     path: '/destination/:slug',
     name: 'Destination',
     component: () => import('@/views/DestinationView.vue'),
+    props: true,
   },
 ]

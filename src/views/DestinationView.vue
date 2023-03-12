@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { getData } from '@/services/getData'
 import { computed, onBeforeMount, ref, watch } from 'vue'
 import { useRoute } from 'vue-router'
 // import sourceData from '@/data/data.json'
@@ -8,22 +9,21 @@ interface Destination {
   name: String
   image: String
 }
+
 const route = useRoute()
 
 let destination = ref({})
 const destinationSlug = computed(() => route.params.slug.toLowerCase())
-async function getData() {
-  const response = await fetch(
-    `https://travel-dummy-api.netlify.app/${destinationSlug.value}.json`
-  )
-  destination.value = await response.json()
+
+async function setData() {
+  destination.value = await getData(destinationSlug.value)
 }
 onBeforeMount(async () => {
-  getData()
+  setData()
   watch(
     () => route.params,
-    () => {
-      getData()
+    async () => {
+      setData()
     }
   )
 })

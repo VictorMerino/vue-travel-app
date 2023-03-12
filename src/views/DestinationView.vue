@@ -10,10 +10,11 @@ interface Destination {
 }
 
 const route = useRoute()
-const destinationId = computed(() => parseInt(route.params.id))
+// const destinationId = computed(() => parseInt(route.params.id))
+const destinationSlug = computed(() => route.params.slug)
 const destination = computed(() =>
   sourceData.destinations.find(
-    destination => destination.id === destinationId.value
+    destination => destination.slug === destinationSlug.value
   )
 )
 </script>

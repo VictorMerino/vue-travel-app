@@ -9,7 +9,7 @@ const destinations = ref(sourceData.destinations)
       <RouterLink
         v-for="destination in destinations"
         :key="destination.id"
-        :to="{ name: 'Destination', params: { id: destination.id } }"
+        :to="{ name: 'Destination', params: { slug: destination.slug } }"
       >
         <h2>{{ destination.name }}</h2>
         <img :src="`/images/${destination.image}`" />

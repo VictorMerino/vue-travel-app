@@ -8,7 +8,7 @@ import sourceData from '@/data/data.json'
     <RouterLink
       v-for="destination in sourceData.destinations"
       :key="destination.id"
-      :to="{ name: 'Destination', params: { id: destination.id } }"
+      :to="{ name: 'Destination', params: { slug: destination.slug } }"
       >{{ destination.name }}
     </RouterLink>
   </div>

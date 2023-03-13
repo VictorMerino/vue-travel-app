@@ -11,21 +11,33 @@ export const routes = [
     name: 'About',
     component: () => import('@/views/AboutView.vue'),
   },
+  // {
+  //   path: '/destination/:slug',
+  //   props: true,
+  //   children: [
+  //     {
+  //       path: '',
+  //       name: 'Destination',
+  //       component: () => import('@/views/DestinationView.vue'),
+  //       props: true,
+  //     },
+  //     {
+  //       path: 'experience/:experienceSlug',
+  //       name: 'Experience',
+  //       component: () => import('@/views/ExperienceView.vue'),
+  //       props: true,
+  //     },
+  //   ]
+  // },
   {
-    path: '/destination/:slug',
-    props: true,
+    path: '/:slug',
+    name: 'DestinationWithSteroids',
+    component: () => import('@/views/DestinationWithSteroidsView.vue'),
     children: [
       {
-        path: '',
-        name: 'Destination',
-        component: () => import('@/views/DestinationView.vue'),
-        props: true,
-      },
-      {
-        path: 'experience/:experienceSlug',
-        name: 'Experience',
-        component: () => import('@/views/ExperienceView.vue'),
-        props: true,
+        path: ':experienceSlug',
+        name: 'ExperienceWithSteroids',
+        component: () => import('@/views/ExperienceWithSteroidsView.vue'),
       },
     ]
   },

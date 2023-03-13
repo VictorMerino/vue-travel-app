@@ -4,7 +4,6 @@ import { getData } from '@/services/getData'
 import { Destination } from '@/types/Destination';
 import { computed, onBeforeMount, ref, watch } from 'vue'
 import { useRoute, RouterView } from 'vue-router'
-// import sourceData from '@/data/data.json'
 
 const route = useRoute()
 

@@ -1,7 +1,10 @@
 <script setup lang="ts">
-const { experience } = defineProps({
-  experience: {}
-})
+import { Experience } from '@/types/Experience';
+
+const { experience } = defineProps<{
+  experience: Experience
+}>()
+
 </script>
 
 <template>

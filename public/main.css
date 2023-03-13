@@ -7,7 +7,6 @@
 body {
   padding: 0;
   margin: 0;
-  margin-top: 150px;
   background: #eee;
 }
 
@@ -42,10 +41,6 @@ a:visited {
 
 /* Navigation */
 #nav {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
   margin-top: 0;
   padding: 30px;
   background: #2c3e50;
@@ -215,5 +210,6 @@ a {
   .experiences .cards,
   .home .destinations {
     flex-direction: column;
+    gap: .75rem;
   }
 }

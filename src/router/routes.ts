@@ -18,13 +18,13 @@ export const routes = [
     children: [
       {
         path: '',
-        name: 'Destination',
+        name: 'Destination_old',
         component: () => import('@/views/ugly-way/DestinationView.vue'),
         props: true,
       },
       {
         path: 'experience/:experienceSlug',
-        name: 'Experience',
+        name: 'Experience_old',
         component: () => import('@/views/ugly-way/ExperienceView.vue'),
         props: true,
       },
@@ -33,13 +33,13 @@ export const routes = [
   // REAL Nested Ones
   {
     path: '/:slug',
-    name: 'DestinationWithSteroids',
-    component: () => import('@/views/DestinationWithSteroidsView.vue'),
+    name: 'Destination',
+    component: () => import('@/views/DestinationView.vue'),
     children: [
       {
         path: ':experienceSlug',
-        name: 'ExperienceWithSteroids',
-        component: () => import('@/views/ExperienceWithSteroidsView.vue'),
+        name: 'Experience',
+        component: () => import('@/views/ExperienceView.vue'),
       },
     ]
   },

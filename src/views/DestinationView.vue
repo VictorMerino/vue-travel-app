@@ -35,8 +35,7 @@ onBeforeMount(async () => {
     </section>
     <section class="experiences">
       <div class="cards">
-        <RouterLink
-          :to="{ name: 'ExperienceWithSteroids', params: { slug: destination.slug, experienceSlug: experience.slug } }"
+        <RouterLink :to="{ name: 'Experience', params: { slug: destination.slug, experienceSlug: experience.slug } }"
           v-for="experience in destination.experiences" :key="experience.slug">
           <ExperienceCard :experience="experience" />
         </RouterLink>

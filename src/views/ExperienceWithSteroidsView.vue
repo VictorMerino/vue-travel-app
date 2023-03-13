@@ -1,20 +1,15 @@
 <script setup lang="ts">
 import ExperienceShow from '@/components/ExperienceShow.vue';
 import { getData } from '@/services/getData'
+import { Destination } from '@/types/Destination';
+import { Experience } from '@/types/Experience';
 import { computed, onBeforeMount, ref, watch } from 'vue'
 import { useRoute } from 'vue-router'
-// import sourceData from '@/data/data.json'
-
-// id: Number
-interface Experience {
-  name: String
-  image: String
-}
 
 const route = useRoute()
 
-let destination = ref({})
-let experience = ref({})
+let destination = ref<Destination>()
+let experience = ref<Experience>()
 const destinationSlug = computed(() => route.params.slug.toLowerCase())
 
 async function setData() {

@@ -11,24 +11,26 @@ export const routes = [
     name: 'About',
     component: () => import('@/views/AboutView.vue'),
   },
-  // {
-  //   path: '/destination/:slug',
-  //   props: true,
-  //   children: [
-  //     {
-  //       path: '',
-  //       name: 'Destination',
-  //       component: () => import('@/views/DestinationView.vue'),
-  //       props: true,
-  //     },
-  //     {
-  //       path: 'experience/:experienceSlug',
-  //       name: 'Experience',
-  //       component: () => import('@/views/ExperienceView.vue'),
-  //       props: true,
-  //     },
-  //   ]
-  // },
+  // Old ugly routes
+  {
+    path: '/destination/:slug',
+    props: true,
+    children: [
+      {
+        path: '',
+        name: 'Destination',
+        component: () => import('@/views/DestinationView.vue'),
+        props: true,
+      },
+      {
+        path: 'experience/:experienceSlug',
+        name: 'Experience',
+        component: () => import('@/views/ExperienceView.vue'),
+        props: true,
+      },
+    ]
+  },
+  // REAL Nested Ones
   {
     path: '/:slug',
     name: 'DestinationWithSteroids',

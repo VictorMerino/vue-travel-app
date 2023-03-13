@@ -1,6 +1,6 @@
-// import { getData } from '@/services/getData'
-import sourceData from '@/data/data.json'
+import { checkIfRouteExists } from '@/services/getData'
 import HomeView from '@/views/HomeView.vue'
+import { RouteParams } from 'vue-router'
 
 export const routes = [
   {
@@ -37,8 +37,8 @@ export const routes = [
     path: '/:slug',
     name: 'Destination',
     component: () => import('@/views/DestinationView.vue'),
-    beforeEnter(to, from) {
-      const exists = sourceData.destinations.find(destination => destination.slug === to.params.slug)
+    beforeEnter(to: RouteParams, from: RouteParams) {
+      const exists =  checkIfRouteExists(to.params.slug)
       if(!exists) return {
           name: 'Error404',
           params: {

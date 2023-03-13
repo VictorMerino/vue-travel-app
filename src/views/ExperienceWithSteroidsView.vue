@@ -28,5 +28,5 @@ onBeforeMount(async () => {
 
 </script>
 <template>
-  <ExperienceShow :experience="experience" />
+  <ExperienceShow v-if="experience" :experience="experience" />
 </template>

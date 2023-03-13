@@ -19,13 +19,13 @@ export const routes = [
       {
         path: '',
         name: 'Destination',
-        component: () => import('@/views/DestinationView.vue'),
+        component: () => import('@/views/ugly-way/DestinationView.vue'),
         props: true,
       },
       {
         path: 'experience/:experienceSlug',
         name: 'Experience',
-        component: () => import('@/views/ExperienceView.vue'),
+        component: () => import('@/views/ugly-way/ExperienceView.vue'),
         props: true,
       },
     ]

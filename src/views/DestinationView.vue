@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import ExperienceCard from '@/components/ExperienceCard.vue';
 import { getData } from '@/services/getData'
 import { computed, onBeforeMount, ref, watch } from 'vue'
 import { useRoute } from 'vue-router'
@@ -42,6 +43,15 @@ onBeforeMount(async () => {
     <div class="destination-details">
       <img :src="`/images/${destination.image}`" :alt="destination.name" />
       <p>{{ destination.description }}</p>
+    </div>
+  </section>
+  <section class="experiences">
+    <div class="cards">
+      <RouterLink :to="{ name: 'Experience', params: { slug: destination.slug, experienceSlug: experience.slug } }"
+        v-for="experience in destination.experiences" :key="experience.slug">
+        <ExperienceCard :experience="experience" />
+      </RouterLink>
+
     </div>
   </section>
 </template>

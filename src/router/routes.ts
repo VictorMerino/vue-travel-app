@@ -13,8 +13,20 @@ export const routes = [
   },
   {
     path: '/destination/:slug',
-    name: 'Destination',
-    component: () => import('@/views/DestinationView.vue'),
     props: true,
+    children: [
+      {
+        path: '',
+        name: 'Destination',
+        component: () => import('@/views/DestinationView.vue'),
+        props: true,
+      },
+      {
+        path: 'experience/:experienceSlug',
+        name: 'Experience',
+        component: () => import('@/views/ExperienceView.vue'),
+        props: true,
+      },
+    ]
   },
 ]

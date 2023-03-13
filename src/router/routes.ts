@@ -43,4 +43,19 @@ export const routes = [
       },
     ]
   },
+
+  // TO-DO: to actually make it work we will need to:
+  /**
+   * Get all routes and save them to Pinia at startup of the page
+   * This way we will avoid calling the enpoint each time
+   * In a route guard, like beforeEach route
+   * we check if route exists (with a reducer maybe?)
+   * If it exists: go on, show the destination/experience/whatever
+   * Else: show the 404 error page
+   */
+  {
+    path: '/:pathMatch(.*)*',
+    name: 'Error404',
+    component: () => import('@/views/Error404View.vue'),
+  }
 ]

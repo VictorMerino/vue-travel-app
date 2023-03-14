@@ -1,8 +1,8 @@
 import { checkIfRouteExists } from '@/services/getData'
 import HomeView from '@/views/HomeView.vue'
-import { RouteParams } from 'vue-router'
+import { RouteParams, RouteRecordRaw } from 'vue-router'
 
-export const routes = [
+export const routes: RouteRecordRaw[] = [
   {
     path: '/',
     name: 'Home',

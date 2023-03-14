@@ -1,7 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import { routes } from './routes'
 
-export const router = createRouter({
+const router = createRouter({
   history: createWebHistory(),
   routes,
   linkActiveClass: 'nav--active',
@@ -11,3 +11,11 @@ export const router = createRouter({
     // return {top: null, left: null, behavior: null}
   }
 })
+
+router.beforeEach((to, from) => {
+  if(to.meta.requiresAuth && !window.user) {
+    // need to login if not already logged in
+    return { name: 'Login' }
+  }
+})
+export { router }

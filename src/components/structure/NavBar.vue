@@ -10,6 +10,8 @@ import sourceData from '@/data/data.json'
       params: { slug: destination.slug.toLowerCase() },
     }">{{ destination.name }}
     </RouterLink>
+
+    <RouterLink :to="{ name: 'Profile' }">Profile</RouterLink>
   </div>
 </template>
 

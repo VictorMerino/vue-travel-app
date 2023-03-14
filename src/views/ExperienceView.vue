@@ -1,30 +1,20 @@
 <script setup lang="ts">
+import { ref } from 'vue'
+
+import { useRoute } from 'vue-router';
 import ExperienceShow from '@/components/ExperienceShow.vue';
-import { getData } from '@/services/getData'
-import { Destination } from '@/types/Destination';
+import { useSetDestinationData } from '@/composables/useSetDestinationData';
 import { Experience } from '@/types/Experience';
-import { computed, onBeforeMount, ref, watch } from 'vue'
-import { useRoute } from 'vue-router'
 
 const route = useRoute()
 
-let destination = ref<Destination>()
-let experience = ref<Experience>()
-const destinationSlug = computed(() => route.params.slug.toLowerCase())
+const { destination } = useSetDestinationData(setExperiences)
 
-async function setData() {
-  destination.value = await getData(destinationSlug.value)
-  experience.value = destination.value.experiences.find(exp => exp.slug === route.params.experienceSlug)
+let experience = ref<Experience>()
+
+function setExperiences() {
+  if (destination.value) experience.value = destination.value.experiences.find(exp => exp.slug === route.params.experienceSlug)
 }
-onBeforeMount(async () => {
-  setData()
-  watch(
-    () => route.params,
-    async () => {
-      setData()
-    }
-  )
-})
 
 </script>
 <template>

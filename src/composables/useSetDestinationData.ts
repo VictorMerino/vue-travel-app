@@ -3,7 +3,7 @@ import { Destination } from "@/types/Destination"
 import { ref, computed, onBeforeMount, watch } from "vue"
 import { useRoute } from "vue-router"
 
-export function useSetDestinationData(callback) {
+export function useSetDestinationData(callback = () => {}) {
   const route = useRoute()
   const dataStore = useDataStore()
 

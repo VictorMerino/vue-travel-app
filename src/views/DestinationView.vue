@@ -1,18 +1,20 @@
 <script setup lang="ts">
 import ExperienceCard from '@/components/ExperienceCard.vue';
 import GoBackButton from '@/components/GoBackButton.vue';
-import { getData } from '@/services/getData'
+import { useDataStore } from '@/stores/data';
 import { Destination } from '@/types/Destination';
 import { computed, onBeforeMount, ref, watch } from 'vue'
 import { useRoute, RouterView } from 'vue-router'
 
 const route = useRoute()
-
+const dataStore = useDataStore()
 let destination = ref<Destination>()
-const destinationSlug = computed(() => route.params.slug.toLowerCase())
+const destinationSlug = computed(() => {
+  return route.params.slug ? route.params.slug.toLowerCase() : ''
+})
 
 async function setData() {
-  destination.value = await getData(destinationSlug.value)
+  destination.value = await dataStore.getDestination(destinationSlug.value)
 }
 onBeforeMount(async () => {
   setData()

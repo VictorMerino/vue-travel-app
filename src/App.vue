@@ -10,7 +10,7 @@ const dos = 2
   <div class="container">
 
     <RouterView v-slot="{ Component }">
-      <Transition name="slide" mode="out-in">
+      <Transition name="fade" mode="out-in">
         <component :is="Component" :key="$route.path" />
       </Transition>
     </RouterView>
@@ -27,5 +27,15 @@ const dos = 2
 .slide-leave-to {
   opacity: 0;
   transform: translateX(-30%)
+}
+
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity .3s;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
 }
 </style>

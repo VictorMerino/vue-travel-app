@@ -1,12 +1,18 @@
 <script setup lang="ts">
 import { ref } from 'vue';
 import { useRouter } from 'vue-router';
+
+import { useUserStore } from '@/stores/user'
 const router = useRouter()
+const userStore = useUserStore()
 const username = ref<string>()
 const password = ref<string>()
 function login() {
-  window.user = username
-  router.push({ name: 'Profile' })
+  if (username.value) {
+    userStore.login(username.value)
+    return router.push({ name: 'Profile' })
+  }
+  alert('Add a username')
 }
 </script>
 <template>

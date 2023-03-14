@@ -2,16 +2,19 @@
 import { ref } from 'vue';
 import { useRouter } from 'vue-router';
 
+import { useUserStore } from '@/stores/user';
+
 const router = useRouter()
-const username = ref(window.user)
+const userStore = useUserStore()
+// const username = ref(window.user)
 function logout() {
-  window.user = null
+  userStore.logout()
   router.push({ name: 'Home' })
 }
 </script>
 <template>
   <section class="profile">
-    <h1>Profile of {{ username }}</h1>
+    <h1>Profile of {{ userStore.username }}</h1>
     <button @click="logout">Logout</button>
   </section>
 </template>

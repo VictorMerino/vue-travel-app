@@ -1,5 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import { routes } from './routes'
+import { useUserStore } from '@/stores/user'
 
 const router = createRouter({
   history: createWebHistory(),
@@ -13,7 +14,8 @@ const router = createRouter({
 })
 
 router.beforeEach((to, from) => {
-  if(to.meta.requiresAuth && !window.user) {
+  const userStore = useUserStore()
+  if(to.meta.requiresAuth && !userStore.username) {
     // need to login if not already logged in
     return { name: 'Login' }
   }

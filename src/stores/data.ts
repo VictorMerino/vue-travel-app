@@ -12,8 +12,10 @@ export const useDataStore = defineStore('data', () => {
 
   async function getDestination(slug: string) {
     if(!destinations.value) await setDataToStore()
-      const destination = destinations.value.find(destination => destination.slug === slug)
-      return destination
+    const destination = destinations.value.find(
+      destination => destination.slug === slug
+    )
+    return destination
   }
 
   return { destinations, setDataToStore, getDestination }

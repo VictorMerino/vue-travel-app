@@ -8,7 +8,12 @@ export function useSetDestinationData(callback = () => {}) {
   const dataStore = useDataStore()
 
   let destination = ref<Destination>()
-  const destinationSlug = computed(() => route.params.slug ? route.params.slug.toLowerCase() : '')
+  const destinationSlug = computed(() => {
+    const routeSlug = route.params.slug
+    return routeSlug && typeof routeSlug === 'string'
+      ? routeSlug.toLowerCase()
+      : ''
+  })
 
   async function setData(callback?: Function) {
     destination.value = await dataStore.getDestination(destinationSlug.value)

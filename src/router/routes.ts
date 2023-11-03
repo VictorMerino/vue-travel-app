@@ -13,13 +13,25 @@ export const routes: RouteRecordRaw[] = [
     name: 'Profile',
     component: () => import('@/views/ProfileView.vue'),
     meta: {
-      requiresAuth: true
-    }
+      requiresAuth: true,
+    },
+    children: [
+      {
+        path: '/',
+        name: 'Dashboard',
+        component: () => import('@/views/DashboardView.vue'),
+      },
+      {
+        path: 'invoices',
+        name: 'Invoices',
+        component: () => import('@/views/InvoicesView.vue'),
+      },
+    ],
   },
   {
     path: '/login',
     name: 'Login',
-    component: () => import('@/views/LoginView.vue')
+    component: () => import('@/views/LoginView.vue'),
   },
   {
     path: '/about',
@@ -31,15 +43,16 @@ export const routes: RouteRecordRaw[] = [
     name: 'Destination',
     component: () => import('@/views/DestinationView.vue'),
     beforeEnter(to: RouteParams, from: RouteParams) {
-      const exists =  checkIfRouteExists(to.params.slug)
-      if(!exists) return {
+      const exists = checkIfRouteExists(to.params.slug)
+      if (!exists)
+        return {
           name: 'Error404',
           params: {
-            pathMatch: to.path.split('/').slice(1)
+            pathMatch: to.path.split('/').slice(1),
           },
           query: to.query,
-          hash: to.hash
-      }
+          hash: to.hash,
+        }
     },
     children: [
       {
@@ -47,7 +60,7 @@ export const routes: RouteRecordRaw[] = [
         name: 'Experience',
         component: () => import('@/views/ExperienceView.vue'),
       },
-    ]
+    ],
   },
 
   // TO-DO: to actually make it work we will need to:
@@ -63,5 +76,5 @@ export const routes: RouteRecordRaw[] = [
     path: '/:pathMatch(.*)*',
     name: 'Error404',
     component: () => import('@/views/Error404View.vue'),
-  }
+  },
 ]

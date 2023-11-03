@@ -2,7 +2,6 @@
 import { useRouter } from 'vue-router'
 
 import { useUserStore } from '@/stores/user'
-import LeftSidebar from '@/components/structure/LeftSidebar.vue'
 
 const router = useRouter()
 const userStore = useUserStore()
@@ -12,14 +11,6 @@ function logout() {
 }
 </script>
 <template>
-  <div>
-    <section class="left-sidebar">
-      <LeftSidebar />
-    </section>
-    <section class="profile">
-      <RouterView />
-    </section>
-  </div>
+  <h1>Profile of {{ userStore.username }}</h1>
+  <button @click="logout">Logout</button>
 </template>
-
-<style scoped></style>

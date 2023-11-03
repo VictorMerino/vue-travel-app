@@ -5,13 +5,17 @@ import sourceData from '@/data/data.json'
 <template>
   <div class="nav" id="nav">
     <RouterLink id="logo" :to="{ name: 'Home' }">Home</RouterLink>
-    <RouterLink v-for="destination in sourceData.destinations" :key="destination.id" :to="{
-      name: 'Destination',
-      params: { slug: destination.slug.toLowerCase() },
-    }">{{ destination.name }}
+    <RouterLink
+      v-for="destination in sourceData.destinations"
+      :key="destination.id"
+      :to="{
+        name: 'Destination',
+        params: { slug: destination.slug.toLowerCase() },
+      }"
+      >{{ destination.name }}
     </RouterLink>
 
-    <RouterLink :to="{ name: 'Profile' }">Profile</RouterLink>
+    <RouterLink :to="{ name: 'Dashboard' }">Profile</RouterLink>
   </div>
 </template>
 
